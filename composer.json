@@ -48,7 +48,10 @@
     "autoload": {
         "psr-4": {
             "Neoan\\Framework\\": "src/"
-        }
+        },
+        "files": [
+            "./src/Support/helpers.php"
+        ]
     },
     "config": {
         "optimize-autoloader": true,

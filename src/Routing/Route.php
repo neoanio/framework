@@ -35,6 +35,13 @@ class Route
             return ucfirst(strtolower($part));
         }, explode('-', array_shift($urlParts) ?? '')));
 
+        $defaultAction = config('app.default.action', 'Home');
+
+        if (!$action) {
+            // default back to configurable action
+            $action = $defaultAction;
+        }
+
         $function = config('app.default.function', 'init');
 
         // overwrite behaviour for api endpoints
@@ -48,21 +55,11 @@ class Route
                 return ucfirst(strtolower($part));
             }, explode('-', array_shift($urlParts) ?? '')));
 
-            if (!$apiAction) {
-                // default back to action
-                $apiAction = $action;
-            }
-
-            // overwrite action with api action
-            $action = $apiAction;
+            // overwrite action
+            $action = $apiAction ?: $defaultAction;
 
             // overwrite function
             $function = "{$method}{$action}";
-        }
-
-        if (!$action) {
-            // default back to configurable action
-            $action = config('app.default.action', 'Home');
         }
 
         $controller = $this->resolveController($action);

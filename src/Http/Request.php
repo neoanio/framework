@@ -33,6 +33,16 @@ class Request extends BaseRequest
     }
 
     /**
+     * Determine if the route is an api route (indicated by its prefix)
+     *
+     * @return false|int
+     */
+    public function hasApiPrefix() : int|false
+    {
+        return preg_match('/api\.(.*)$/', $this->getPathInfo());
+    }
+
+    /**
      * Determine if the current request probably expects a JSON response.
      *
      * @return bool
@@ -41,6 +51,6 @@ class Request extends BaseRequest
     {
         return $this->wantsJson()
             || ($this->acceptsAnyContentType() && $this->isXmlHttpRequest())
-            || preg_match('/api\.(.*)$/', $this->getPathInfo());
+            || $this->hasApiPrefix();
     }
 }

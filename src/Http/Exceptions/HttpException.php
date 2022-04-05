@@ -3,12 +3,13 @@
 namespace Neoan\Framework\Http\Exceptions;
 
 use Symfony\Component\HttpKernel\Exception\HttpException as BaseHttpException;
+use Throwable;
 
 abstract class HttpException extends BaseHttpException
 {
-    public ?\Throwable $internalException;
+    public ?Throwable $internalException;
 
-    public function __construct(int $statusCode, string $message = '', \Throwable $previous = null, array $headers = [], int $code = 0)
+    public function __construct(int $statusCode, string $message = '', Throwable $previous = null, array $headers = [], int $code = 0)
     {
         $this->internalException = $previous;
 

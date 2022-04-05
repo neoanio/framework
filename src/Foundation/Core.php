@@ -13,7 +13,7 @@ class Core extends Container
      *
      * @var string
      */
-    const VERSION = '4.0.11';
+    const VERSION = '4.0.12';
 
     /**
      * The base path for the Neoan installation

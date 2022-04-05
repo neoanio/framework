@@ -43,13 +43,18 @@ class Route
             // normalise request method
             $method = strtolower($this->request->getMethod());
 
-            // extract action from url path
-            $action = implode('', array_map(function ($part) {
+            // extract api action from url path
+            $apiAction = implode('', array_map(function ($part) {
                 return ucfirst(strtolower($part));
             }, explode('-', array_shift($urlParts) ?? '')));
 
+            if (!$apiAction) {
+                // default back to action
+                $apiAction = $action;
+            }
+
             // overwrite function
-            $function = "{$method}{$action}";
+            $function = "{$method}{$apiAction}";
         }
 
         if (!$action) {

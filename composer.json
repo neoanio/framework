@@ -1,0 +1,57 @@
+{
+    "name": "neoanio/framework",
+    "type": "library",
+    "description": "The Neoan Framework",
+    "keywords": [
+        "neoan",
+        "framework",
+        "php"
+    ],
+    "license": "MIT",
+    "homepage": "https://www.neoan.io",
+    "support": {
+        "issues": "https://github.com/neoanio/framework/issues",
+        "source": "https://github.com/neoanio/framework"
+    },
+    "authors": [
+        {
+            "name": "Stefan Roehrl",
+            "email": "stefan.roehrl@gmail.com"
+        },
+        {
+            "name": "Marco Hochmuth",
+            "email": "marco.hochmuth@marcodes.dev"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "vlucas/phpdotenv": "^5.4",
+        "filp/whoops": "^2.14",
+        "monolog/monolog": "^2.4",
+        "illuminate/container": "^9.5",
+        "illuminate/config": "^9.5",
+        "symfony/http-foundation": "^6.0",
+        "symfony/http-kernel": "^6.0",
+        "symfony/console": "^6.0",
+        "illuminate/console": "^9.5"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.4.7",
+        "phpunit/phpunit": "^9.5.8",
+        "pestphp/pest": "^1.21"
+    },
+    "autoload": {
+        "psr-4": {
+            "Neoan\\Framework\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "prefer-stable": true
+}

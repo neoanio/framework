@@ -53,8 +53,11 @@ class Route
                 $apiAction = $action;
             }
 
+            // overwrite action with api action
+            $action = $apiAction;
+
             // overwrite function
-            $function = "{$method}{$apiAction}";
+            $function = "{$method}{$action}";
         }
 
         if (!$action) {

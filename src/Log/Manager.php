@@ -28,7 +28,7 @@ class Manager implements LoggerInterface
         $this->logger = new Logger('neoan');
 
         $handler = new StreamHandler(
-            base_path(config('logging.path')),
+            base_path(config('logging.path', 'logs/neoan.log')),
             Logger::DEBUG
         );
 

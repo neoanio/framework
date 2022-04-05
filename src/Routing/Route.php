@@ -35,8 +35,7 @@ class Route
             return ucfirst(strtolower($part));
         }, explode('-', array_shift($urlParts) ?? '')));
 
-        // @todo neoan router make default function configurable
-        $function = 'init';
+        $function = config('app.default.function', 'init');
 
         if ($this->request->expectsJson()) {
 
@@ -49,24 +48,9 @@ class Route
 
             $function = "{$method}{$action}";
 
-        } elseif (preg_match('/serve.file\/(.*)$/', $urlPath)) {
-
-            // @todo neoan router serve file logic
-
-        } elseif (preg_match('/node_modules\/(.*)$/', $urlPath)) {
-
-            $file = app()->basePath($urlPath);
-
-            if (!file_exists($file)) {
-                throw new RouteNotFoundException("Target file [{$file}] does not exist.");
-            }
-
-            return file_get_contents($file);
-
         }
 
-        // @todo neoan router make default action configurable
-        $action = $action ?: 'Default';
+        $action = $action ?: config('app.default.action', 'Home');
 
         // @todo neoan router allow guessing strategy
         $controller = "\\App\\Component\\{$action}\\{$action}Controller";

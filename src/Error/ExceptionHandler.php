@@ -2,7 +2,6 @@
 
 namespace Neoan\Framework\Error;
 
-use Exception;
 use Neoan\Framework\Console\Application;
 use Neoan\Framework\Console\Output;
 use Neoan\Framework\Container\Container;

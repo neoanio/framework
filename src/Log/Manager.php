@@ -6,7 +6,6 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use Neoan\Framework\Container\Container;
 use Psr\Log\LoggerInterface;
 use Stringable;
 
@@ -29,7 +28,7 @@ class Manager implements LoggerInterface
         $this->logger = new Logger('neoan');
 
         $handler = new StreamHandler(
-            Container::getInstance()->basePath() . '/logs/neoan.log',
+            base_path(config('logging.path')),
             Logger::DEBUG
         );
 

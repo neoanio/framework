@@ -4,7 +4,6 @@ namespace Neoan\Framework\Error;
 
 use Neoan\Framework\Console\Application;
 use Neoan\Framework\Console\Output;
-use Neoan\Framework\Container\Container;
 use Neoan\Framework\Error\Capabilities\RendersExceptionAsHtmlResponse;
 use Neoan\Framework\Error\Capabilities\RendersExceptionAsJsonResponse;
 use Neoan\Framework\Http\Exceptions\InternalServerErrorHttpException;
@@ -42,7 +41,7 @@ class ExceptionHandler
         }
 
         /** @var \Psr\Log\LoggerInterface $logger */
-        $logger = Container::getInstance()->make(LoggerInterface::class);
+        $logger = make(LoggerInterface::class);
 
         $logger->error($exception->getMessage(), [
             'exception' => $exception,

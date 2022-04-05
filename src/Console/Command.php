@@ -3,7 +3,6 @@
 namespace Neoan\Framework\Console;
 
 use Neoan\Framework\Console\Capabilities\InteractsWithIO;
-use Neoan\Framework\Container\Container;
 use Symfony\Component\Console\Command\Command as BaseCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -36,6 +35,6 @@ class Command extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        return (int) Container::getInstance()->call($this);
+        return (int) call($this);
     }
 }

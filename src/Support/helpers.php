@@ -9,7 +9,7 @@ use Neoan\Framework\Support\Env;
  *
  * @param  string|null  $abstract
  * @param  array  $parameters
- * @return mixed|\Neoan\Framework\Foundation\Application
+ * @return mixed|\Neoan\Framework\Foundation\Core
  * @throws \Illuminate\Contracts\Container\BindingResolutionException
  */
 function make(?string $abstract = null, array $parameters = [])
@@ -35,6 +35,18 @@ function call(callable|array|string $callback, array $parameters = [], ?string $
 }
 
 /**
+ * Get the base path of the application installation.
+ *
+ * @param  string  $path
+ * @return string
+ * @throws \Illuminate\Contracts\Container\BindingResolutionException
+ */
+function base_path(string $path = '')
+{
+    return make()->basePath($path);
+}
+
+/**
  * Get / set the specified configuration value.
  *
  * If an array is passed as the key, we will assume you want to set an array of values.
@@ -48,7 +60,7 @@ function call(callable|array|string $callback, array $parameters = [], ?string $
 function config(array|string|null $key = null, $default = null)
 {
     /** @var \Neoan\Framework\Config\Manager $configManager */
-    $configManager = Container::getInstance()->make('config');
+    $configManager = make('config');
 
     if (is_null($key)) {
         return $configManager;
